@@ -74,4 +74,8 @@ public abstract class CrewMember {
     public void setFilms(List<Film> films) {
         this.films = films;
     }
+
+    public void getPaid(int amount) {
+        this.money += amount;
+    }
 }

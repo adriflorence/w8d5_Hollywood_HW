@@ -12,14 +12,20 @@ import java.util.List;
 public class DBFilm {
 
     private static Session session;
-    
 
-    public static List<Film> getAllFilms(Actor actor) {
+
+    public static void addActorToCast(Actor actor, Film film) {
+        actor.addFilm(film);
+        film.addActor(actor);
+        DBHelper.update(film); // updates join table
+    }
+
+    public static List<Actor> getAllActorsForFilm(Film film) {
         session = HibernateUtil.getSessionFactory().openSession();
-        List<Film> results = null;
+        List<Actor> results = null;
         try {
-            Criteria cr = session.createCriteria(Film.class);
-            cr.add(Restrictions.eq("actor", actor));
+            Criteria cr = session.createCriteria(Actor.class);
+            cr.add(Restrictions.eq("film", film));
             results =  cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -28,4 +34,6 @@ public class DBFilm {
         }
         return results;
     }
+
+
 }

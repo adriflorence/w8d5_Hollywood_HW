@@ -11,11 +11,11 @@ public class Director extends CrewMember {
     private List<Film> films;
 
     public Director() {
-        this.films = new ArrayList<Film>();
     }
 
     public Director(String first_name, String last_name, int money) {
         super(first_name, last_name, money);
+        this.films = new ArrayList<Film>();
     }
 
     // one director can have many films, one film can only have one director (in this case)

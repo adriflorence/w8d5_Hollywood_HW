@@ -7,6 +7,7 @@ public enum Genre {
     ROMANCE,
     COMEDY,
     HORROR,
-    THRILLER;
+    THRILLER,
+    WAR;
 
 }

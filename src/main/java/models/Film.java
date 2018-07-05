@@ -107,12 +107,16 @@ public class Film {
     @ManyToMany
     @JoinTable(name = "film_cast",
             joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "crewMember_id", nullable = false, updatable = false)})
+            inverseJoinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)})
     public List<Actor> getCast() {
         return cast;
     }
 
     public void setCast(List<Actor> cast) {
         this.cast = cast;
+    }
+
+    public void addActor(Actor actor) {
+        this.cast.add(actor);
     }
 }

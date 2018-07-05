@@ -10,14 +10,16 @@ public class Studio {
     private int id;
     private String name;
     private String location;
+    private int budget;
     private List<Film> films;
 
     public Studio() {
     }
 
-    public Studio(String name, String location) {
+    public Studio(String name, String location, int budget) {
         this.name = name;
         this.location = location;
+        this.budget = budget;
     }
 
     @Id
@@ -49,6 +51,15 @@ public class Studio {
         this.location = location;
     }
 
+    @Column()
+    public int getBudget() {
+        return budget;
+    }
+
+    public void setBudget(int budget) {
+        this.budget = budget;
+    }
+
     // one studio has many films, one film can only have one studio
     @OneToMany(mappedBy="studio", fetch = FetchType.LAZY)
     public List<Film> getFilms() {
@@ -57,5 +68,10 @@ public class Studio {
 
     public void setFilms(List<Film> films) {
         this.films = films;
+    }
+
+    public void payStaff(CrewMember crewMember, int amount) {
+        crewMember.getPaid(amount);
+        this.budget = this.budget - amount;
     }
 }
