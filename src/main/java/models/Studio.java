@@ -70,8 +70,8 @@ public class Studio {
         this.films = films;
     }
 
-    public void payStaff(CrewMember crewMember, int amount) {
-        crewMember.getPaid(amount);
+    public void payActor(Actor actor, int amount) {
+        actor.getPaid(amount);
         this.budget = this.budget - amount;
     }
 }

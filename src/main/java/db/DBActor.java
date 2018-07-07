@@ -19,7 +19,8 @@ public class DBActor {
         List<Film> results = null;
         try {
             Criteria cr = session.createCriteria(Film.class);
-            cr.add(Restrictions.eq("actor", actor));
+            cr.createAlias("films", "film");
+            cr.add(Restrictions.eq("actor.id", actor.getId()));
             results =  cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();

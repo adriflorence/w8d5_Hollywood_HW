@@ -37,7 +37,7 @@ public class ActorTest {
     public void canGetPaid(){
         assertEquals(100000, actor1.getMoney());
         assertEquals(800000, studio1.getBudget());
-        studio1.payStaff(actor1, 30000);
+        studio1.payActor(actor1, 30000);
         assertEquals(130000, actor1.getMoney());
         assertEquals(770000, studio1.getBudget());
     }

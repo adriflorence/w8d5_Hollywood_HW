@@ -25,7 +25,8 @@ public class DBFilm {
         List<Actor> results = null;
         try {
             Criteria cr = session.createCriteria(Actor.class);
-            cr.add(Restrictions.eq("film", film));
+            cr.createAlias("films", "film");
+            cr.add(Restrictions.eq("film.id", film.getId()));
             results =  cr.list();
         } catch (HibernateException e) {
             e.printStackTrace();

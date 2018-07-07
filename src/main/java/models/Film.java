@@ -16,7 +16,6 @@ public class Film {
     private Director director;
     private Studio studio;
     private int year;
-    private List<CrewMember> crew;
     private List<Actor> cast;
 
     public Film() {
@@ -28,7 +27,6 @@ public class Film {
         this.director = director;
         this.studio = studio;
         this.year = year;
-        this.crew = new ArrayList<CrewMember>();
         this.cast = new ArrayList<Actor>();
     }
 
@@ -88,19 +86,6 @@ public class Film {
 
     public void setStudio(Studio studio) {
         this.studio = studio;
-    }
-
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @ManyToMany
-    @JoinTable(name = "film_crewMember",
-            joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)},
-            inverseJoinColumns = {@JoinColumn(name = "crewMember_id", nullable = false, updatable = false)})
-    public List<CrewMember> getCrew() {
-        return crew;
-    }
-
-    public void setCrew(List<CrewMember> crew) {
-        this.crew = crew;
     }
 
     @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
