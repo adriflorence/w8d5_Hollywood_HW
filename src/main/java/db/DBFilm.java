@@ -14,10 +14,10 @@ public class DBFilm {
     private static Session session;
 
 
-    public static void addActorToCast(Actor actor, Film film) {
+    public static void addActorToFilm(Actor actor, Film film) {
         actor.addFilm(film);
         film.addActor(actor);
-        DBHelper.update(film); // updates join table
+        DBHelper.save(film);
     }
 
     public static List<Actor> getAllActorsForFilm(Film film) {

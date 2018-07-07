@@ -17,6 +17,7 @@ public class Film {
     private Studio studio;
     private int year;
     private List<Actor> cast;
+//    private List<Award> awards;
 
     public Film() {
     }
@@ -28,6 +29,7 @@ public class Film {
         this.studio = studio;
         this.year = year;
         this.cast = new ArrayList<Actor>();
+//        this.awards = new ArrayList<Award>();
     }
 
     @Id
@@ -50,7 +52,7 @@ public class Film {
         this.title = title;
     }
 
-    @Column(name="genre")
+    @Enumerated(EnumType.STRING)
     public Genre getGenre() {
         return genre;
     }
@@ -104,4 +106,23 @@ public class Film {
     public void addActor(Actor actor) {
         this.cast.add(actor);
     }
+//
+//    public List<Award> getAwards() {
+//        return awards;
+//    }
+//
+//    public void setAwards(List<Award> awards) {
+//        this.awards = awards;
+//    }
+
+//    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
+//    @ManyToMany
+//    @JoinTable(name = "film_awards",
+//            joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false, unique = true)},
+//            inverseJoinColumns = {@JoinColumn(name = "award_id", nullable = false, updatable = false, unique = true)})
+//
+//
+//    public void addAward(Award award) {
+//        this.awards.add(award);
+//    }
 }
