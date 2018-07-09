@@ -90,8 +90,7 @@ public class Film {
         this.studio = studio;
     }
 
-    @Cascade(org.hibernate.annotations.CascadeType.SAVE_UPDATE)
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.PERSIST)
     @JoinTable(name = "film_cast",
             joinColumns = {@JoinColumn(name = "film_id", nullable = false, updatable = false)},
             inverseJoinColumns = {@JoinColumn(name = "actor_id", nullable = false, updatable = false)})
